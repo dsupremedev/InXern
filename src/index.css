@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-brand-teal: #0f4c4c;
+  --color-brand-teal-hover: #1a6363;
+  --color-brand-gold: #c9a227;
+  --color-brand-gold-hover: #e0b93a;
+  --color-brand-bg-tint: #e6f0f0;
+  --color-brand-page-bg: #f7f7f5;
+  --color-brand-text-dark: #1a1a1a;
+  --color-brand-text-muted: #5c5c5c;
+  --color-brand-border: #e0e0e0;
+
+  /* Status Pill Colors (PRD v4) */
+  --color-status-applied: #5c5c5c;
+  --color-status-under-review: #1a6363;
+  --color-status-shortlisted: #c9a227;
+  --color-status-hired: #0f4c4c;
+  --color-status-rejected: #b3261e;
+  --color-status-withdrawn: #8a8a82;
+
+  /* Typography */
+  --font-sans: "Inter", sans-serif;
+  --font-heading: "Poppins", sans-serif;
+}
