@@ -3,6 +3,7 @@ import { useAuth } from "../../context/AuthContext";
 import applicant from "../../assets/icons/applicant-icon.svg";
 import org from "../../assets/icons/org-icon.svg";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 type SignableRole = "applicant" | "org_admin";
 
 export const SignUp: React.FC = () => {
@@ -50,7 +51,7 @@ export const SignUp: React.FC = () => {
     setErrorMsg(null);
 
     // I need to handle form validation
-    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    const gmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
     if (!gmailRegex.test(formInfo.email)) {
       setLoading(false);
       return setStatus({
@@ -135,7 +136,10 @@ export const SignUp: React.FC = () => {
     >
       <h1 className="my-[28px] text-[24px] font-[700]">Create your account</h1>
       <p className="my-[8.33px] text-status-applied text-[14px]">
-        Already have an account? <span className="text-brand-teal">Log in</span>
+        Already have an account?{" "}
+        <Link to="/login">
+          <span className="text-brand-teal">Log in</span>
+        </Link>
       </p>
 
       <div
@@ -227,25 +231,26 @@ export const SignUp: React.FC = () => {
             Password
           </label>
 
-          <input
-            id="password"
-            name="password"
-            value={formInfo.password}
-            onChange={manageChange}
-            type={showPassword ? "text" : "password"}
-            placeholder="At least 8 characters"
-            className="relative w-full text-[14px] font-[500] h-[41px] my-[6px] px-[16px] py-[10px] border border-brand-border text-brand-text-muted rounded-[12px]"
-          />
-          <button
-            className="absolute w-[80px] mx-[-90px] my-[10px] bg-brand-bg-tint p-[8px] text-[11px] rounded-lg"
-            onClick={passwordVisibility}
-          >
-            {showPassword ? "HIDE" : "SHOW"}
-          </button>
-
+          <div className="relative">
+            <input
+              id="password"
+              name="password"
+              value={formInfo.password}
+              onChange={manageChange}
+              type={showPassword ? "text" : "password"}
+              placeholder="At least 8 characters"
+              className="relative w-full text-[14px] font-[500] h-[41px] my-[6px] px-[16px] py-[10px] border border-brand-border text-brand-text-muted rounded-[12px]"
+            />
+            <button
+              type="button"
+              onClick={passwordVisibility}
+              className="absolute right-2 top-[10px] bg-brand-bg-tint px-3 py-2 text-[11px] font-semibold rounded-lg text-brand-teal"
+            >
+              {showPassword ? "HIDE" : "SHOW"}
+            </button>
+          </div>
           <button
             type="submit"
-            onClick={handleSignup}
             className="w-full text-[14px] font-[600] h-[41px] my-[6px] px-[16px] py-[10px] border border-brand-border text-brand-text-dark bg-brand-gold rounded-[12px] cursor-pointer"
           >
             {loading ? "Loading..." : "Create account"}
