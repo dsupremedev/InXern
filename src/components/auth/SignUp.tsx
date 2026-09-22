@@ -4,6 +4,7 @@ import applicant from "../../assets/icons/applicant-icon.svg";
 import org from "../../assets/icons/org-icon.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 type SignableRole = "applicant" | "org_admin";
 
 export const SignUp: React.FC = () => {
@@ -19,7 +20,7 @@ export const SignUp: React.FC = () => {
     type: "success" | "error";
     message: string;
   } | null>(null);
-
+  const navigate = useNavigate();
   //   I need a function for password visibility
   const passwordVisibility = (e: React.FormEvent) => {
     e.preventDefault();
@@ -111,6 +112,12 @@ export const SignUp: React.FC = () => {
 
         if (profileError) {
           throw profileError;
+        }
+
+        if (role === "applicant") {
+          navigate("/skill-profile");
+        } else {
+          navigate("/");
         }
 
         setStatus({

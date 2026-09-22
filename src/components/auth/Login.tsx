@@ -3,7 +3,8 @@ import { useAuth } from "../../context/AuthContext";
 import applicant from "../../assets/icons/applicant-icon.svg";
 import org from "../../assets/icons/org-icon.svg";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,6 +14,7 @@ export const Login: React.FC = () => {
     message: string;
   } | null>(null);
 
+  const navigate = useNavigate();
   const [formInfo, setFormInfo] = useState({
     email: "",
     password: "",
@@ -68,12 +70,18 @@ export const Login: React.FC = () => {
           throw profileError;
         }
 
+        if (profileData?.role === "applicant") {
+          navigate("/skill-profile");
+        } else {
+          navigate("/");
+        }
         setStatus({
           type: "success",
-          message: "Login Successful",
+          message: "Login Successful.",
         });
 
         //   I will handle automatic role redirection here LiaTerminalSolid, once i build the destinations
+        // <Navigate to="/skillprofile" />;
       }
     } catch (error: any) {
       setStatus({

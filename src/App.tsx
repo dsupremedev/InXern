@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { CgLogIn } from "react-icons/cg";
 import { ProtectedRoute } from "../src/components/auth/ProtectedRoute";
 import { Navigate } from "react-router-dom";
+import { SkillProfile } from "./components/SkillProfile";
 export const App: React.FC = () => {
   return (
     <Router>
@@ -18,6 +19,8 @@ export const App: React.FC = () => {
           <Route path="login" element={<Login />} />
 
           <Route element={<ProtectedRoute allowedRoles={["applicant"]} />}>
+            <Route path="skill-profile" element={<SkillProfile />} />
+
             {/* I will add /profile-setup, /my-applications, etc. here */}
           </Route>
 
