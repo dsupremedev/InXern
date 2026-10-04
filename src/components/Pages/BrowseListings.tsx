@@ -214,7 +214,7 @@ export const BrowseListings: React.FC = () => {
                     ) : null}
 
                     <Link
-                      to={`/browse/${listing.id}`}
+                      to={`/listing-detail/${listing.id}`}
                       className="bg-[#0F4C4C] hover:bg-[#1A6363] text-white text-xs font-semibold px-4 py-2 rounded-lg shadow-sm transition-colors"
                     >
                       View Details & Apply

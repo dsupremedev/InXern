@@ -9,6 +9,7 @@ import { ProtectedRoute } from "../src/components/auth/ProtectedRoute";
 import { Navigate } from "react-router-dom";
 import { SkillProfile } from "./components/SkillProfile";
 import { BrowseListings } from "./components/Pages/BrowseListings";
+import { ListingDetail } from "./components/Pages/ListingDetail";
 export const App: React.FC = () => {
   return (
     <Router>
@@ -22,6 +23,7 @@ export const App: React.FC = () => {
           <Route element={<ProtectedRoute allowedRoles={["applicant"]} />}>
             <Route path="skill-profile" element={<SkillProfile />} />
             <Route path="browse" element={<BrowseListings />} />
+            <Route path="listing-detail/:id" element={<ListingDetail />} />
 
             {/* I will add /profile-setup, /my-applications, etc. here */}
           </Route>

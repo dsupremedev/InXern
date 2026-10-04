@@ -119,6 +119,10 @@ export const SkillProfile = () => {
         const { error: insertError } = await supabase
           .from("applicant_skills")
           .insert(rowsToInsert);
+
+        if (insertError) {
+          throw insertError;
+        }
       }
       navigate("/browse");
     } catch (error: any) {

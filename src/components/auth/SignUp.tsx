@@ -62,28 +62,28 @@ export const SignUp: React.FC = () => {
       });
     }
 
-    if (formInfo.password.length < 8) {
-      setLoading(false);
-      return setStatus({
-        type: "error",
-        message:
-          "Password is too short. It must be at least 8 characters long.",
-      });
-    }
+    // if (formInfo.password.length < 8) {
+    //   setLoading(false);
+    //   return setStatus({
+    //     type: "error",
+    //     message:
+    //       "Password is too short. It must be at least 8 characters long.",
+    //   });
+    // }
 
-    const hasLowerCase = /[a-z]/.test(formInfo.password);
-    const hasUpperCase = /[A-Z]/.test(formInfo.password);
-    const hasNumber = /[0-9]/.test(formInfo.password);
-    const hasSymbol = /[!@#\$%^&*(),.?":{}|<>]/.test(formInfo.password);
+    // const hasLowerCase = /[a-z]/.test(formInfo.password);
+    // const hasUpperCase = /[A-Z]/.test(formInfo.password);
+    // const hasNumber = /[0-9]/.test(formInfo.password);
+    // const hasSymbol = /[!@#\$%^&*(),.?":{}|<>]/.test(formInfo.password);
 
-    if (!hasLowerCase || !hasUpperCase || !hasNumber || !hasSymbol) {
-      setLoading(false);
-      return setStatus({
-        type: "error",
-        message:
-          "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special symbol.",
-      });
-    }
+    // if (!hasLowerCase || !hasUpperCase || !hasNumber || !hasSymbol) {
+    //   setLoading(false);
+    //   return setStatus({
+    //     type: "error",
+    //     message:
+    //       "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special symbol.",
+    //   });
+    // }
     try {
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email: formInfo.email,

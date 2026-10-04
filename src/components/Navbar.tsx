@@ -6,7 +6,7 @@ import { useAuth } from "../context/AuthContext";
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { user, profile } = useAuth();
-
+  const isApplicant = profile?.role === "applicant";
   const getInitials = () => {
     const name = profile?.full_name || "USER";
     return name
@@ -113,6 +113,14 @@ export const Navbar: React.FC = () => {
           >
             Log in
           </Link>
+          {isApplicant && (
+            <Link
+              to="/skill-profile"
+              className="text-brand-teal text-sm font-medium py-1"
+            >
+              Skill profile
+            </Link>
+          )}
           <Link
             to="/signup"
             className="bg-[#C9A227] text-[#1A1A1A] text-center text-sm font-semibold py-2 rounded-xl"
