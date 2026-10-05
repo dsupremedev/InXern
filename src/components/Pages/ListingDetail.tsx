@@ -5,7 +5,8 @@ import { formatDateWithOrdinal } from "../../hooks/useListingDetails";
 import { useAuth } from "../../context/AuthContext";
 
 export const ListingDetail: React.FC = () => {
-  const { listingDetails, matchScore, applicantSkills } = useListingDetails();
+  const { listingDetails, matchScore, missingSkills, applicantSkills } =
+    useListingDetails();
   const applicantCount = listingDetails?.applications?.[0]?.count ?? 0;
 
   if (!listingDetails) {
@@ -68,7 +69,7 @@ export const ListingDetail: React.FC = () => {
           <div className="flex flex-wrap items-center gap-y-2 gap-x-6 text-sm text-gray-500 pt-2 border-t border-gray-50">
             {/* <div className="flex items-center gap-1.5">
               <span>📍</span>
-              <span>Lagos, Nigeria</span>
+              <span>Lagos, Nigeria</span> 3
             </div> */}
             <div className="flex items-center gap-1.5">
               <span>📅</span>
@@ -151,30 +152,36 @@ export const ListingDetail: React.FC = () => {
           </div>
 
           {/* Missing Skills Section */}
-          <div className="pt-4 border-t border-gray-100 space-y-3">
-            <div className="flex items-center gap-1.5 text-xs text-gray-600 font-medium">
-              <span>🎯</span>
-              <span>Skills you're missing</span>
+          {missingSkills.length > 0 ? (
+            <div className="pt-4 border-t border-gray-100 space-y-3">
+              <div className="flex items-center gap-1.5 text-xs text-gray-600 font-medium">
+                <span>🎯</span>
+                <span>Skills you're missing</span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {missingSkills.map((req, idx) => (
+                  <span
+                    key={idx}
+                    className="bg-gray-100 text-gray-700 text-xs px-3 py-1.5 rounded-lg font-medium"
+                  >
+                    {req.skills.name}
+                  </span>
+                ))}
+              </div>
+
+              <p className="text-xs text-gray-400">
+                Add these to your{" "}
+                <Link to="/profile" className="text-gray-600 underline">
+                  skills profile
+                </Link>{" "}
+                to improve your score.
+              </p>
             </div>
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-gray-100 text-gray-600 text-xs px-2.5 py-1 rounded-lg flex items-center gap-1">
-                <span>&times;</span> Node.js
-              </span>
-              <span className="bg-gray-100 text-gray-600 text-xs px-2.5 py-1 rounded-lg flex items-center gap-1">
-                <span>&times;</span> PostgreSQL
-              </span>
-              <span className="bg-gray-100 text-gray-600 text-xs px-2.5 py-1 rounded-lg flex items-center gap-1">
-                <span>&times;</span> Redis
-              </span>
-            </div>
+          ) : (
             <p className="text-xs text-gray-400">
-              Add these to your{" "}
-              <Link to="/profile" className="text-gray-600 underline">
-                skills profile
-              </Link>{" "}
-              to improve your score.
+              You have all the required skills for this role!
             </p>
-          </div>
+          )}
         </div>
 
         {/* Application CTA Card */}

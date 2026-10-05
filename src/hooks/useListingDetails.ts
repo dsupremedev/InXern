@@ -130,6 +130,14 @@ export const useListingDetails = () => {
 
     return Math.round((earnedWeight / totalWeight) * 100);
   }, [applicantSkills, listingDetails]);
+
+  const missingSkills =
+    listingDetails?.listing_requirements?.filter(
+      (req) =>
+        req.requirement_type === "required" &&
+        !applicantSkills?.includes(req.skill_id),
+    ) || [];
+  console.log("Missing skills:", missingSkills.length);
   console.log("Applicant skills:", applicantSkills);
   console.log("Listing Details:", listingDetails);
 
@@ -137,5 +145,6 @@ export const useListingDetails = () => {
     listingDetails,
     applicantSkills,
     matchScore,
+    missingSkills,
   };
 };
