@@ -26,7 +26,7 @@ export const App: React.FC = () => {
             <Route path="skill-profile" element={<SkillProfile />} />
             <Route path="browse" element={<BrowseListings />} />
             <Route path="listing-detail/:id" element={<ListingDetail />} />
-            <Route path="apply-listing" element={<ApplyListing />} />
+            <Route path="apply-listing/:id" element={<ApplyListing />} />
 
             {/* I will add /profile-setup, /my-applications, etc. here */}
           </Route>
