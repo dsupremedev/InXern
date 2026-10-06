@@ -10,6 +10,8 @@ import { Navigate } from "react-router-dom";
 import { SkillProfile } from "./components/SkillProfile";
 import { BrowseListings } from "./components/Pages/BrowseListings";
 import { ListingDetail } from "./components/Pages/ListingDetail";
+import { ApplyListing } from "./components/Pages/ApplyListing";
+
 export const App: React.FC = () => {
   return (
     <Router>
@@ -24,6 +26,7 @@ export const App: React.FC = () => {
             <Route path="skill-profile" element={<SkillProfile />} />
             <Route path="browse" element={<BrowseListings />} />
             <Route path="listing-detail/:id" element={<ListingDetail />} />
+            <Route path="apply-listing" element={<ApplyListing />} />
 
             {/* I will add /profile-setup, /my-applications, etc. here */}
           </Route>

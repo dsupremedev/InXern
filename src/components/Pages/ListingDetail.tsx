@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 import { useListingDetails } from "../../hooks/useListingDetails";
 import { formatDateWithOrdinal } from "../../hooks/useListingDetails";
 import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const ListingDetail: React.FC = () => {
+  const navigate = useNavigate();
+
+  const manageApply = () => {
+    navigate(`/apply-listing/${listingDetails?.id}`);
+  };
   const { listingDetails, matchScore, missingSkills, applicantSkills } =
     useListingDetails();
   const applicantCount = listingDetails?.applications?.[0]?.count ?? 0;
@@ -192,8 +198,10 @@ export const ListingDetail: React.FC = () => {
               {formatDateWithOrdinal(listingDetails.deadline)}
             </p>
           </div>
-
-          <button className="w-full bg-[#D9A726] hover:bg-[#c49520] text-gray-900 font-semibold py-3 rounded-xl transition-colors">
+          <button
+            className="w-full bg-[#D9A726] hover:bg-[#c49520] text-gray-900 font-semibold py-3 rounded-xl transition-colors"
+            onClick={manageApply}
+          >
             Log in to apply
           </button>
 
