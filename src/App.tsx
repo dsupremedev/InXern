@@ -4,7 +4,6 @@ import { SignUp } from "./components/auth/SignUp";
 import { Login } from "./components/auth/Login";
 import { Navbar } from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { CgLogIn } from "react-icons/cg";
 import { ProtectedRoute } from "../src/components/auth/ProtectedRoute";
 import { Navigate } from "react-router-dom";
 import { SkillProfile } from "./components/SkillProfile";
