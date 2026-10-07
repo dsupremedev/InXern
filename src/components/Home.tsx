@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.png";
 import markLogo from "../assets/images/markLogo.png";
+import { useAuth } from "../context/AuthContext";
 
 export const Home: React.FC = () => {
+  const { user, profile } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -30,18 +32,29 @@ export const Home: React.FC = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto pt-2">
-            <Link
-              to="/browse"
-              className="bg-[#C9A227] hover:bg-[#E0B93A] text-[#1A1A1A] font-semibold text-center px-6 py-3 rounded-xl transition-colors shadow-sm"
-            >
-              Browse listings
-            </Link>
-            <Link
-              to="/signup"
-              className="border border-white/30 hover:bg-white/10 text-white font-medium text-center px-6 py-3 rounded-xl transition-colors"
-            >
-              Sign up free
-            </Link>
+            {profile?.role === "org_admin" ? (
+              <Link
+                to="/org/create-listing"
+                className="bg-[#C9A227] hover:bg-[#E0B93A] text-[#1A1A1A] font-semibold text-center px-6 py-3 rounded-xl transition-colors shadow-sm"
+              >
+                Manage Listings
+              </Link>
+            ) : (
+              <Link
+                to="/browse"
+                className="bg-[#C9A227] hover:bg-[#E0B93A] text-[#1A1A1A] font-semibold text-center px-6 py-3 rounded-xl transition-colors shadow-sm"
+              >
+                Browse listings
+              </Link>
+            )}
+            {!user && (
+              <Link
+                to="/signup"
+                className="border border-white/30 hover:bg-white/10 text-white font-medium text-center px-6 py-3 rounded-xl transition-colors"
+              >
+                Sign up free
+              </Link>
+            )}
           </div>
         </div>
       </section>
@@ -226,7 +239,7 @@ export const Home: React.FC = () => {
 
           <div className="pt-4">
             <Link
-              to="/signup"
+              to="/org/create-listing"
               className="inline-block bg-[#0F4C4C] hover:bg-[#1A6363] text-white text-sm font-semibold px-6 py-3 rounded-xl transition-colors shadow-sm"
             >
               Post your first listing

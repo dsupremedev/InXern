@@ -72,6 +72,8 @@ export const Login: React.FC = () => {
 
         if (profileData?.role === "applicant") {
           navigate("/skill-profile");
+        } else if (profileData?.role === "org_admin") {
+          navigate("/org/create-listing");
         } else {
           navigate("/");
         }
@@ -220,7 +222,7 @@ export const Login: React.FC = () => {
       </div>
       <p className="my-[8.33px] text-status-applied text-[14px]">
         Platform admin?{" "}
-        <Link to="/signup">
+        <Link to="/admin/login">
           <span className="text-brand-teal">Login</span>
         </Link>
       </p>

@@ -101,14 +101,26 @@ export const SignUp: React.FC = () => {
         throw authError;
       }
       //I need to ensuring that the account is created successfuly in auth.users before inserting to profiles table
+      // if (authData.user) {
+      //   const { error: profileError } = await supabase.from("profiles").insert([
+      //     {
+      //       id: authData.user.id,
+      //       full_name: formInfo.fullName,
+      //       role: role,
+      //     },
+      //   ]);
+
+      //   if (profileError) {
+      //     throw profileError;
+      //   }
       if (authData.user) {
-        const { error: profileError } = await supabase.from("profiles").insert([
-          {
-            id: authData.user.id,
+        const { error: profileError } = await supabase
+          .from("profiles")
+          .update({
             full_name: formInfo.fullName,
             role: role,
-          },
-        ]);
+          })
+          .eq("id", authData.user.id);
 
         if (profileError) {
           throw profileError;
@@ -116,6 +128,8 @@ export const SignUp: React.FC = () => {
 
         if (role === "applicant") {
           navigate("/skill-profile");
+        } else if (role === "org_admin") {
+          navigate("/org/setup");
         } else {
           navigate("/");
         }
