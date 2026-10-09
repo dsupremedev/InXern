@@ -418,11 +418,12 @@ export const ListingDetail: React.FC = () => {
               </div>
 
               <p className="text-xs text-gray-400">
-                Add these to your{" "}
+                You can keep your skills up to date by visiting your{" "}
                 <Link to="/skill-profile" className="text-gray-600 underline">
                   skills profile
                 </Link>{" "}
-                to improve your score.
+                to ensure your match score accurately reflects your current
+                expertise..
               </p>
             </div>
           ) : (

@@ -208,16 +208,41 @@ export const useApplications = () => {
     }
   };
 
+  // const withdrawApplication = async (applicationId: string) => {
+  //   try {
+  //     setError(null);
+  //     // Call Supabase update or RPC function for withdrawal
+  //     const { error: updateError } = await supabase
+  //       .from("applications")
+  //       .update({ status: "Withdrawn" })
+  //       .eq("id", applicationId);
+
+  //     if (updateError) throw updateError;
+
+  //     // Update local state to reflect withdrawal immediately
+  //     setApplications((prev) =>
+  //       prev.map((app) =>
+  //         app.id === applicationId ? { ...app, status: "Withdrawn" } : app,
+  //       ),
+  //     );
+  //     return { success: true };
+  //   } catch (err: any) {
+  //     setError(err.message || "Failed to withdraw application");
+  //     return { success: false, error: err.message };
+  //   }
+  // };
+
   const withdrawApplication = async (applicationId: string) => {
     try {
       setError(null);
-      // Call Supabase update or RPC function for withdrawal
-      const { error: updateError } = await supabase
-        .from("applications")
-        .update({ status: "Withdrawn" })
-        .eq("id", applicationId);
 
-      if (updateError) throw updateError;
+      // Call the secure Postgres RPC function to avoid any RLS recursion
+      const { error: rpcError } = await supabase.rpc(
+        "withdraw_application_secure" as any,
+        { app_id: applicationId },
+      );
+
+      if (rpcError) throw rpcError;
 
       // Update local state to reflect withdrawal immediately
       setApplications((prev) =>

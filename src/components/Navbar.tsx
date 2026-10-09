@@ -190,34 +190,38 @@ export const Navbar: React.FC = () => {
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-6">
-          {isOrgAdmin ? (
-            <Link
-              to="/org/dashboard"
-              className="text-brand-teal hover:text-brand-teal-hover text-sm font-medium transition-colors"
-            >
-              Manage Listings
-            </Link>
-          ) : (
+          {user && (
             <>
-              <Link
-                to="/browse"
-                className="text-brand-teal text-sm font-medium py-1"
-              >
-                Browse Listings
-              </Link>
-              <Link
-                to="/skill-profile"
-                className="text-brand-teal hover:text-brand-teal-hover text-sm font-medium transition-colors"
-              >
-                Skill Profile
-              </Link>
+              {user && isOrgAdmin ? (
+                <Link
+                  to="/org/dashboard"
+                  className="text-brand-teal hover:text-brand-teal-hover text-sm font-medium transition-colors"
+                >
+                  Manage Listings
+                </Link>
+              ) : (
+                <>
+                  <Link
+                    to="/browse"
+                    className="text-brand-teal text-sm font-medium py-1"
+                  >
+                    Browse Listings
+                  </Link>
+                  <Link
+                    to="/skill-profile"
+                    className="text-brand-teal hover:text-brand-teal-hover text-sm font-medium transition-colors"
+                  >
+                    Skill Profile
+                  </Link>
 
-              <Link
-                to="/my-applications"
-                className="text-brand-teal hover:text-brand-teal-hover text-sm font-medium transition-colors"
-              >
-                My Applications
-              </Link>
+                  <Link
+                    to="/my-applications"
+                    className="text-brand-teal hover:text-brand-teal-hover text-sm font-medium transition-colors"
+                  >
+                    My Applications
+                  </Link>
+                </>
+              )}
             </>
           )}
 

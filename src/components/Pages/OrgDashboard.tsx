@@ -353,7 +353,7 @@ export const OrgDashboardPage = () => {
                               rel="noopener noreferrer"
                               className="px-3 py-1.5 bg-[#0F4C4C] hover:bg-[#1A6363] text-white text-xs font-medium rounded-lg transition-colors"
                             >
-                              View Resume &rarr;
+                              View Resume / CV &rarr;
                             </a>
                           </div>
                         </div>
