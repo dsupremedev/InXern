@@ -73,7 +73,7 @@ export const Login: React.FC = () => {
         if (profileData?.role === "applicant") {
           navigate("/skill-profile");
         } else if (profileData?.role === "org_admin") {
-          navigate("/org/create-listing");
+          navigate("/org/dashboard");
         } else {
           navigate("/");
         }
@@ -143,13 +143,7 @@ export const Login: React.FC = () => {
               </label>
               <button
                 type="button"
-                onClick={() =>
-                  setStatus({
-                    type: "error",
-                    message:
-                      "Password reset instructions will be sent to your email.",
-                  })
-                }
+                onClick={() => navigate("/forgot-password")}
                 className="text-[12px] font-[400] text-brand-teal hover:underline"
               >
                 Forgot Password?

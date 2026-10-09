@@ -85,6 +85,9 @@ import { AdminSkillsPage } from "./components/Pages/AdminSkillsPage";
 import { AdminLoginPage } from "./components/auth/AdminLoginPage";
 import { AdminTestRunnerPage } from "./components/Pages/AdminTestRunnerPage";
 import { AdminSecurityTestsPage } from "./components/Pages/AdminSecurityTestPage";
+import { MyApplicationsPage } from "./components/Pages/MyApplicationsPage";
+import { ForgotPasswordPage } from "./components/Pages/ForgotPasswordPage";
+import { ResetPasswordPage } from "./components/Pages/ResetPasswordPage";
 
 export const App: React.FC = () => {
   return (
@@ -96,6 +99,8 @@ export const App: React.FC = () => {
           <Route path="signup" element={<SignUp />} />
           <Route path="login" element={<Login />} />
           <Route path="admin/login" element={<AdminLoginPage />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="/reset-password" element={<ResetPasswordPage />} />
 
           {/* Protected Routes for Applicants Only */}
           <Route element={<ProtectedRoute allowedRoles={["applicant"]} />}>
@@ -103,6 +108,7 @@ export const App: React.FC = () => {
             <Route path="browse" element={<BrowseListings />} />
             <Route path="listing-detail/:id" element={<ListingDetail />} />
             <Route path="apply-listing/:id" element={<ApplyListing />} />
+            <Route path="my-applications" element={<MyApplicationsPage />} />
           </Route>
 
           {/* Protected Routes for Organizations Only */}

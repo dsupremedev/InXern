@@ -10,13 +10,14 @@ export interface ApplicantSubmission {
   applied_at: string;
   resume_link: string;
   message: string | null;
+  declared_skills_snapshot?: string[];
   applicant_profile?: {
     full_name: string;
   };
-  skills?: {
-    skill_name: string;
-    proficiency: string;
-  }[];
+  //   skills?: {
+  //     skill_name: string;
+  //     proficiency: string;
+  //   }[];
 }
 
 export interface OrgListingWithApplicants {
@@ -75,6 +76,7 @@ export const useOrgDashboard = () => {
           resume_link,
           message,
           listing_id,
+          declared_skills_snapshot,
           profiles:applicant_id (
             full_name
           )
@@ -98,6 +100,7 @@ export const useOrgDashboard = () => {
               applied_at: app.applied_at,
               resume_link: app.resume_link,
               message: app.message,
+              declared_skills_snapshot: app.declared_skills_snapshot || [],
               applicant_profile: {
                 full_name: app.profiles?.full_name || "Applicant",
               },

@@ -11,25 +11,22 @@ export const Home: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#F7F7F5] font-sans text-[#1A1A1A] flex flex-col justify-between">
       {/* 2. HERO SECTION */}
-      <section className="bg-[#0F4C4C] text-white px-6 pt-12 pb-20">
+      <section className="bg-[#0F4C4C] text-white px-6 pt-12 pb-20 [clip-path:ellipse(150%_100%_at_50%_0%)]">
         <div className="max-w-4xl mx-auto flex flex-col items-start gap-6 text-left">
-          {/* Tagline Badge */}
+          {/* Tagline Badge
           <div className="text-[#E0B93A] text-xs font-semibold px-3 py-1.5 rounded-md uppercase tracking-wider">
             Every opportunity, one place.
-          </div>
-
+          </div> */}
           {/* Headline */}
           <h1 className="text-3xl md:text-5xl font-bold leading-tight max-w-2xl">
             Find your next <span className="text-[#C9A227]">opportunity</span>{" "}
             or post one.
           </h1>
-
           {/* Pitch Subtext */}
           <p className="text-white/80 text-base md:text-lg max-w-xl leading-relaxed">
             InXern connects ambitious applicants with organizations offering
             jobs and internships across Africa and beyond.
           </p>
-
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto pt-2">
             {profile?.role === "org_admin" ? (
@@ -44,7 +41,7 @@ export const Home: React.FC = () => {
                 to="/browse"
                 className="bg-[#C9A227] hover:bg-[#E0B93A] text-[#1A1A1A] font-semibold text-center px-6 py-3 rounded-xl transition-colors shadow-sm"
               >
-                Browse listings
+                Browse listings{" "}
               </Link>
             )}
             {!user && (
@@ -60,7 +57,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* 3. STATS SECTION */}
-      <section className="bg-[#F7F7F5] py-12 px-6 border-b border-[#E0E0E0]">
+      <section className="relative bg-[#F7F7F5] py-12 px-6 border-b border-[#E0E0E0]">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div className="space-y-1">
             <p className="text-2xl md:text-3xl font-bold text-[#1A1A1A]">
