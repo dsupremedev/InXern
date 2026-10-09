@@ -70,7 +70,7 @@ export const ApplyListing = () => {
               rows={5}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Tell them who you are, why you're a good fit, and what excites you about this role. Keep it brief — 2–4 sentences."
+              placeholder="Tell them who you are, why you're a good fit, and what excites you about this role. Keep it brief, 2–4 sentences."
               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-transparent text-sm placeholder-gray-400 text-gray-800 transition-all resize-none"
             />
           </div>
