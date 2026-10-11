@@ -244,9 +244,17 @@ export const Navbar: React.FC = () => {
 
           {user && (
             <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-full bg-[#1A6363] flex items-center justify-center font-bold text-sm">
+              {/* <div className="w-8 h-8 rounded-full bg-[#1A6363] flex items-center justify-center font-bold text-sm">
                 <span className="text-[#C9A227]">{getInitials()}</span>
-              </div>
+              </div> */}
+
+              <Link
+                to="/profile"
+                title="View Profile"
+                className="w-8 h-8 rounded-full bg-[#1A6363] flex items-center justify-center font-bold text-sm hover:ring-2 hover:ring-[#C9A227] hover:ring-offset-2 transition-all cursor-pointer"
+              >
+                <span className="text-[#C9A227]">{getInitials()}</span>
+              </Link>
               <button
                 onClick={handleLogout}
                 className="text-sm font-medium text-red-600 hover:text-red-800 transition-colors"
@@ -260,9 +268,13 @@ export const Navbar: React.FC = () => {
         {/* Mobile View Toggle */}
         <div className="md:hidden flex justify-between gap-6 items-center">
           {user && (
-            <div className="w-8 h-8 rounded-full bg-[#1A6363] flex items-center justify-center font-bold text-sm">
+            <Link
+              to="/profile"
+              title="View Profile"
+              className="w-8 h-8 rounded-full bg-[#1A6363] flex items-center justify-center font-bold text-sm hover:ring-2 hover:ring-[#C9A227] hover:ring-offset-2 transition-all cursor-pointer"
+            >
               <span className="text-[#C9A227]">{getInitials()}</span>
-            </div>
+            </Link>
           )}
 
           <button

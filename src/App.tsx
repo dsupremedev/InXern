@@ -88,6 +88,7 @@ import { AdminSecurityTestsPage } from "./components/Pages/AdminSecurityTestPage
 import { MyApplicationsPage } from "./components/Pages/MyApplicationsPage";
 import { ForgotPasswordPage } from "./components/Pages/ForgotPasswordPage";
 import { ResetPasswordPage } from "./components/Pages/ResetPasswordPage";
+import { ProfilePage } from "./components/Pages/ProfilePage";
 
 export const App: React.FC = () => {
   return (
@@ -101,6 +102,7 @@ export const App: React.FC = () => {
           <Route path="admin/login" element={<AdminLoginPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
 
           {/* Protected Routes for Applicants Only */}
           <Route element={<ProtectedRoute allowedRoles={["applicant"]} />}>
